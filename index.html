@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nossa História de Amor</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Modo de Edição -->
+        <div id="edit-mode" class="edit-mode">
+            <div class="edit-header">
+                <h1><i class="fas fa-heart"></i> Configure Sua História de Amor</h1>
+                <p>Preencha os campos abaixo para criar sua página personalizada</p>
+            </div>
+            
+            <form id="love-form" class="love-form">
+                <div class="form-group">
+                    <label for="message"><i class="fas fa-message"></i> Sua Mensagem de Amor</label>
+                    <textarea id="message" placeholder="Escreva aqui sua mensagem especial..." rows="4"></textarea>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="photo-url"><i class="fas fa-image"></i> URL da Foto</label>
+                        <input type="url" id="photo-url" placeholder="https://exemplo.com/foto.jpg">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="video-url"><i class="fas fa-video"></i> URL do Vídeo</label>
+                        <input type="url" id="video-url" placeholder="https://youtube.com/watch?v=...">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="start-date"><i class="fas fa-calendar-heart"></i> Data de Início do Relacionamento</label>
+                        <input type="date" id="start-date">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="music-url"><i class="fas fa-music"></i> URL da Música</label>
+                        <input type="url" id="music-url" placeholder="https://open.spotify.com/track/...">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="partner1-name"><i class="fas fa-user"></i> Seu Nome</label>
+                        <input type="text" id="partner1-name" placeholder="Seu nome">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="partner2-name"><i class="fas fa-user"></i> Nome do(a) Parceiro(a)</label>
+                        <input type="text" id="partner2-name" placeholder="Nome do(a) parceiro(a)">
+                    </div>
+                </div>
+                
+                <button type="submit" class="save-btn">
+                    <i class="fas fa-save"></i> Salvar e Finalizar
+                </button>
+            </form>
+        </div>
+        
+        <!-- Modo de Visualização -->
+        <div id="view-mode" class="view-mode hidden">
+            <div class="love-header">
+                <div class="hearts-animation">
+                    <i class="fas fa-heart heart1"></i>
+                    <i class="fas fa-heart heart2"></i>
+                    <i class="fas fa-heart heart3"></i>
+                </div>
+                <h1 class="love-title">
+                    <span id="display-partner1"></span> 
+                    <i class="fas fa-heart"></i> 
+                    <span id="display-partner2"></span>
+                </h1>
+            </div>
+            
+            <div class="content-grid">
+                <div class="message-section">
+                    <div class="section-header">
+                        <i class="fas fa-quote-left"></i>
+                        <h2>Nossa História</h2>
+                    </div>
+                    <p id="display-message" class="love-message"></p>
+                </div>
+                
+                <div class="photo-section">
+                    <div class="section-header">
+                        <i class="fas fa-camera"></i>
+                        <h2>Nosso Momento</h2>
+                    </div>
+                    <div class="photo-container">
+                        <img id="display-photo" alt="Foto do casal" class="love-photo">
+                    </div>
+                </div>
+                
+                <div class="counter-section">
+                    <div class="section-header">
+                        <i class="fas fa-calendar-heart"></i>
+                        <h2>Juntos Há</h2>
+                    </div>
+                    <div class="counter-display">
+                        <div class="counter-item">
+                            <span id="years" class="counter-number">0</span>
+                            <span class="counter-label">Anos</span>
+                        </div>
+                        <div class="counter-item">
+                            <span id="months" class="counter-number">0</span>
+                            <span class="counter-label">Meses</span>
+                        </div>
+                        <div class="counter-item">
+                            <span id="days" class="counter-number">0</span>
+                            <span class="counter-label">Dias</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="video-section">
+                    <div class="section-header">
+                        <i class="fas fa-play"></i>
+                        <h2>Nosso Vídeo</h2>
+                    </div>
+                    <div class="video-container">
+                        <iframe id="display-video" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+                
+                <div class="music-section">
+                    <div class="section-header">
+                        <i class="fas fa-music"></i>
+                        <h2>Nossa Música</h2>
+                    </div>
+                    <div class="music-container">
+                        <iframe id="display-music" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer">
+                <p>💕 Criado com amor 💕</p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
+
