@@ -24,9 +24,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function saveData() {
+        const photoFile = document.getElementById('photo-file').files[0];
+        const photoUrl = document.getElementById('photo-url').value;
+        
         const data = {
             message: document.getElementById('message').value,
-            photoUrl: document.getElementById('photo-url').value,
+            photoUrl: photoUrl,
             videoUrl: document.getElementById('video-url').value,
             startDate: document.getElementById('start-date').value,
             musicUrl: document.getElementById('music-url').value,
@@ -40,12 +43,25 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
-        // Salvar no localStorage
-        localStorage.setItem('lovePageData', JSON.stringify(data));
-        
-        // Exibir os dados
-        displayData(data);
-        showViewMode();
+        // Se há um arquivo de foto, converter para base64
+        if (photoFile) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                data.photoBase64 = e.target.result;
+                // Salvar no localStorage
+                localStorage.setItem('lovePageData', JSON.stringify(data));
+                // Exibir os dados
+                displayData(data);
+                showViewMode();
+            };
+            reader.readAsDataURL(photoFile);
+        } else {
+            // Salvar no localStorage sem foto de arquivo
+            localStorage.setItem('lovePageData', JSON.stringify(data));
+            // Exibir os dados
+            displayData(data);
+            showViewMode();
+        }
     }
     
     function displayData(data) {
@@ -57,7 +73,13 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('display-message').textContent = data.message;
         
         // Exibir foto
-        if (data.photoUrl) {
+        if (data.photoBase64) {
+            // Usar foto carregada do dispositivo
+            const photoImg = document.getElementById('display-photo');
+            photoImg.src = data.photoBase64;
+            photoImg.style.display = 'block';
+        } else if (data.photoUrl) {
+            // Usar foto da URL
             const photoImg = document.getElementById('display-photo');
             photoImg.src = data.photoUrl;
             photoImg.style.display = 'block';
